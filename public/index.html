@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>入稿さん</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M12 5h15l11 11v25a3 3 0 0 1-3 3H12a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z" fill="white" stroke="%23202123" stroke-width="3" stroke-linejoin="round"/><path d="M27 5v11h11" fill="none" stroke="%23202123" stroke-width="3" stroke-linejoin="round"/><circle cx="19" cy="27" r="2.2" fill="%23202123"/><circle cx="29" cy="27" r="2.2" fill="%23202123"/><path d="M19 33.5c2 2.2 8 2.2 10 0" stroke="%23202123" stroke-width="2.6" stroke-linecap="round" fill="none"/></svg>'>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-brand" id="homeBtn" title="最初の画面に戻る">
+    <span class="mark"><svg viewBox="0 0 48 48" width="26" height="26" fill="none"><path d="M12 5h15l11 11v25a3 3 0 0 1-3 3H12a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z" fill="var(--bg)" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M27 5v11h11" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="19" cy="27" r="2.2" fill="currentColor"/><circle cx="29" cy="27" r="2.2" fill="currentColor"/><path d="M19 33.5c2 2.2 8 2.2 10 0" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none"/></svg></span>
+    <span class="name">入稿さん</span>
+    <select id="siteSelect" class="site-select" title="入稿先サイトを切り替え"></select>
+  </div>
+  <button class="icon-btn" id="settingsBtn" title="設定">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.08a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.08a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.08a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+  </button>
+</header>
+
+<main class="chat" id="chat">
+  <div class="welcome" id="welcome">
+    <div class="welcome-mark"><svg viewBox="0 0 48 48" width="92" height="92" fill="none"><path d="M12 5h15l11 11v25a3 3 0 0 1-3 3H12a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z" fill="var(--bg)" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M27 5v11h11" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle class="eye" cx="19" cy="27" r="2.2" fill="currentColor"/><circle class="eye" cx="29" cy="27" r="2.2" fill="currentColor"/><path class="mouth" d="M19 33.5c2 2.2 8 2.2 10 0" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" fill="none"/></svg></div>
+    <h1>原稿を、そのまま記事に。</h1>
+    <p>原稿 (.md) を添付すると、参考記事から書き方を学習し、<br>変換・本文照合・WordPressへの入稿まで入稿さんが自動で行います。</p>
+    <div class="dropzone" id="dropzone">
+      <svg class="cloud" viewBox="0 0 780 400" fill="none" aria-hidden="true">
+        <circle class="puff puff-1" cx="168" cy="258" r="96"/>
+        <circle class="puff puff-2" cx="298" cy="192" r="126"/>
+        <circle class="puff puff-3" cx="468" cy="184" r="136"/>
+        <circle class="puff puff-4" cx="614" cy="254" r="100"/>
+        <ellipse class="puff puff-5" cx="390" cy="298" rx="312" ry="94"/>
+      </svg>
+      <div class="dz-content">
+      <div class="dropzone-main">原稿をここにドロップ</div>
+      <div class="dropzone-sub">─ .md と画像をドロップ ─</div>
+      <span class="dropzone-btn">ファイルを選択</span>
+      </div>
+    </div>
+    <p class="welcome-note">※本文はテンプレートに機械的に流し込まれるため、一切変更されません。</p>
+  </div>
+</main>
+
+<input type="file" id="fileInput" accept=".md,.txt,.markdown,image/*" multiple hidden>
+
+<!-- 追加指示バー (直前に入稿した記事への指示) -->
+<!-- 実行中の中止ボタン -->
+<button class="abort-btn hidden" id="abortBtn">■ 中止</button>
+
+<!-- メディアライブラリから画像を選ぶ -->
+<div class="modal-overlay hidden" id="mediaOverlay">
+  <div class="modal media-modal">
+    <div class="modal-head">
+      <h2>メディアから選ぶ</h2>
+      <button class="icon-btn" id="mediaClose">×</button>
+    </div>
+    <div class="media-search">
+      <input type="text" id="mediaQuery" placeholder="キーワードで検索 (空欄なら新しい順)" autocomplete="off">
+      <button class="tray-start" id="mediaSearchBtn">検索</button>
+    </div>
+    <div class="media-grid" id="mediaGrid"><div class="media-empty">検索してください</div></div>
+    <p class="modal-note">クリックで準備トレイに追加されます (再アップロードはされません)。追加後、トレイで右クリックするとアイキャッチに指定できます。</p>
+  </div>
+</div>
+
+<div class="instruct-bar hidden" id="instructBar">
+  <input type="text" id="instructInput" placeholder="直前の記事への追加指示 (例: 公開にして ／ 2枚目の画像を◯◯の見出しの下に)">
+  <button class="instruct-send" id="instructSend" title="指示を送る">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg>
+  </button>
+  <button class="next-doc" id="nextDocBtn">＋ 次の原稿</button>
+</div>
+
+<!-- 入稿準備トレイ (原稿+画像。画像は右クリックでアイキャッチ指定) -->
+<div class="image-tray hidden" id="imageTray">
+  <div class="tray-head">
+    <span id="trayTitle">入稿の準備</span>
+    <span class="tray-hint" id="trayHint">画像のサムネイルを右クリックでアイキャッチ指定</span>
+    <button class="tray-media" id="trayMediaBtn">メディアから選ぶ</button>
+    <button class="tray-start" id="trayStart">入稿を開始 ▶</button>
+  </div>
+  <div class="tray-items">
+    <div id="trayDoc"></div>
+    <div class="tray-thumbs" id="trayThumbs"></div>
+  </div>
+</div>
+
+<!-- 設定モーダル -->
+<div class="modal-overlay hidden" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>設定</h2>
+      <button class="icon-btn" id="modalClose">×</button>
+    </div>
+
+    <div class="modal-tabs">
+      <button class="modal-tab active" data-pane="site" id="modalTabSite">このサイト</button>
+      <button class="modal-tab" data-pane="global">共通</button>
+    </div>
+
+    <!-- タブ1: サイトごとの設定 -->
+    <div class="modal-pane" data-pane="site">
+      <label>サイト名 <span class="label-note">切り替え時の表示名</span>
+        <input type="text" id="siteName" placeholder="未入力の場合はドメイン名を表示" autocomplete="off">
+      </label>
+      <label>サイトURL
+        <input type="url" id="wpUrl" placeholder="https://example.com" autocomplete="off">
+      </label>
+      <label>ユーザー名
+        <input type="text" id="wpUser" placeholder="admin" autocomplete="off">
+      </label>
+      <label>アプリケーションパスワード
+        <input type="password" id="wpPass" placeholder="xxxx xxxx xxxx xxxx" autocomplete="off">
+      </label>
+      <label>参考記事のURL <span class="label-note">任意 ─ 空欄なら最新3記事から自動学習</span>
+        <input type="url" id="refUrl" placeholder="空欄で自動取得 (特定の記事に合わせたい場合のみ入力)" autocomplete="off">
+      </label>
+      <label>AIに渡すメモ <span class="label-note">任意 ─ このサイトの書き方の注意点</span>
+        <textarea id="siteNote" rows="3"></textarea>
+      </label>
+      <label>広告リンクのパターン <span class="label-note">1行1つ ─ クッションのパス (/go/)</span>
+        <textarea id="adPatterns" rows="2" placeholder="/go/"></textarea>
+      </label>
+      <div class="modal-actions">
+        <button class="btn-ghost danger" id="deleteSiteBtn">このサイトを削除</button>
+      </div>
+    </div>
+
+    <!-- タブ2: 全サイト共通の設定 -->
+    <div class="modal-pane hidden" data-pane="global">
+      <label>Claude APIキー <span class="label-note">任意 ─ AI変換・自動設定に使用</span>
+        <input type="password" id="apiKey" placeholder="sk-ant-..." autocomplete="off">
+      </label>
+      <label>投稿ステータス
+        <select id="postStatus">
+          <option value="draft">下書きとして保存</option>
+          <option value="publish">すぐに公開</option>
+        </select>
+      </label>
+
+      <div class="modal-section">チェックシート連携 (任意)</div>
+      <label>WebアプリのURL <span class="label-note">テンプレートのApps Scriptから発行</span>
+        <input type="url" id="sheetGasUrl" autocomplete="off">
+      </label>
+      <label>合言葉 <span class="label-note">Apps Scriptに書いたTOKENと同じもの</span>
+        <input type="text" id="sheetGasToken" autocomplete="off">
+      </label>
+
+      <p class="modal-note">このタブの内容は全サイト共通で1箇所に保存されます。ディスクリプションはSEOプラグイン (Yoast / Rank Math / SEO SIMPLE PACK / Cocoon) を自動検出してメタ欄へ保存し、抜粋にも保存します。設定はすべてサーバーに保存され、チーム全員で共有されます。</p>
+    </div>
+
+    <button class="btn-primary" id="modalSave">保存</button>
+  </div>
+</div>
+
+<!-- 画像の配置エディタ -->
+<div class="modal-overlay hidden" id="arrangeOverlay">
+  <div class="modal arrange-modal">
+    <div class="modal-head">
+      <h2>画像の配置</h2>
+      <div class="arr-head-actions">
+        <button class="tray-start" id="arrApply">反映する ▶</button>
+        <button class="icon-btn" id="arrClose">×</button>
+      </div>
+    </div>
+    <p class="arr-hint">画像をドラッグして好きな位置へ (クリックで選んで、入れたい場所をクリックでもOK)。右の「使わない画像」へ移すと本文から外れます。</p>
+    <div class="arr-body">
+      <div class="arr-list" id="arrList"></div>
+      <div class="arr-side">
+        <div class="arr-side-title">使わない画像</div>
+        <div class="arr-rail" id="arrRail"><div class="arr-rail-empty">ここへドラッグで本文から外す</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

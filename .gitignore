@@ -1,0 +1,4 @@
+data/
+gas/.clasp.json
+*.log
+node_modules/
